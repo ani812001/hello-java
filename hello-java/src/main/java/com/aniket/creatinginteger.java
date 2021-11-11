@@ -24,5 +24,6 @@ public class creatinginteger {
         System.out.println("boolean =" +x);
 
 
+
     }
 }
