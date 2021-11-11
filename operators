@@ -1,0 +1,29 @@
+public class Usingoperators {
+    public static void main(String[] args)
+    {
+        //operators
+
+        int x = 20;
+        int y = 5;
+        float a = (2*4)+ (3*7)+ 2;
+        float p = 2;
+        float q = 11;
+
+        int z = x+y;
+        int e = x*y;
+        int f = x/y;
+        float f1 = x/y;
+        float r = q/p;
+        float r1 = q%p;
+
+
+        System.out.println(z);
+        System.out.println(e);
+        System.out.println(f);
+        System.out.println(f1);
+        System.out.println(a);
+        System.out.println(r);
+        System.out.println(r1);
+
+    }
+}
