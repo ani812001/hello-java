@@ -1,4 +1,3 @@
-package com.ank;
 
 public class assiginingvariables {
 
