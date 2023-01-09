@@ -1,8 +1,7 @@
-package com.ank;
 
 import java.util.Scanner;
 
-public class codingchallange1 {
+public class codingchallange {
     public static void main(String[] args)
     {
         /****     Codingchallenge    ****/
