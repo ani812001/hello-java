@@ -1,5 +1,5 @@
 
-public class assiginingvariables {
+public class AssigniningVariables {
 
     public static void main(String[] args)
     {
