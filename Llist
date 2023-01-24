@@ -1,0 +1,55 @@
+package learning;
+
+public class LList {
+
+    private Node head ;
+
+    public LList(Node head) {
+        this.head = head;
+    }
+
+    public LList() {
+    }
+
+
+    public static void main(String[] args) {
+        LList lList = new LList();
+        lList.add(4);
+    }
+
+    public void add(int value) {
+
+        if (head != null) {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = new Node(value, null);
+        } else {
+            head = new Node(value, null);
+        }
+    }
+
+    public void display(){
+        System.out.println(head);
+    }
+    //
+
+    static class Node{
+        int data;
+        Node next;
+
+        public Node(int data, Node next) {
+            this.data = data;
+            this.next = next;
+        }
+
+        @Override
+        public String toString() {
+            return "Node{" +
+                    "data=" + data +
+                    ", next=" + next +
+                    '}';
+        }
+    }
+}
