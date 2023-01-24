@@ -1,0 +1,35 @@
+package learning;
+
+public class StudentTeacher {
+        String studentName;
+        int studentAge;
+        int studentClass;
+
+        String teacherName;
+        int teacherAge;
+        String teacherSubject;
+
+        public String getStudentData() {
+            return studentName + ", " + studentAge +" ,"+ studentClass;
+        }
+
+        public String getTeacherData() {
+            return teacherName + ", " + teacherAge +", "+ teacherSubject;
+        }
+
+        public static void main(String[] args) {
+            StudentTeacher st = new StudentTeacher();
+            StudentTeacher dr = new StudentTeacher();
+            
+            st.studentName = "John";
+            st.studentAge = 20;
+            st.studentClass = 12;
+
+            st.teacherName = "Mr. Bhosle";
+            st.teacherAge = 40;
+            st.teacherSubject = "Maths";
+
+            System.out.println("Teacher data: " + st.getTeacherData());
+            System.out.println("Student data :" + st.getStudentData());
+        }
+    }
