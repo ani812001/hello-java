@@ -1,0 +1,20 @@
+package learning;
+public class Power {
+        static int staticVariable = 5;
+        int height = 5;
+
+        public static void main(String[] args) {
+            learning.Power instance1 = new learning.Power();
+            learning.Power instance2 = new learning.Power();
+            System.out.println(new learning.Power().power(5,3 ) );
+        }
+
+        public long power(int base, int exp) {
+            long result = base;
+            for (int i = 1; i <= exp; i++) {
+                result = result * base;
+            }
+            return result;
+        }
+    }
+
