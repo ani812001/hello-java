@@ -1,0 +1,71 @@
+package learning;
+
+class Prime {
+    static String name = "aniket";
+    private int age ;
+
+    public Prime(int age) {
+        this.age = age;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public static void main(String[] args) {
+       Prime p1 = new Prime(3);
+       Prime p2 = new Prime(4);
+       Prime p3 = new Prime(5);
+       Prime p4 = new Prime(6);
+
+       System.out.println(p1.name);
+       System.out.println(p2.name);
+       System.out.println(p3.name);
+       System.out.println(p4.name);
+
+        p1.name = "santosh";
+
+        System.out.println(p1.name);
+        System.out.println(p2.name);
+        System.out.println(p3.name);
+        System.out.println(p4.name);
+
+        p1.age = 5;
+        System.out.println(p1.getAge());
+        System.out.println(p2.getAge());
+        System.out.println(p3.getAge());
+        System.out.println(p4.getAge());
+
+
+
+//        if (isPrime(20))
+//        {
+//            System.out.println("The number is prime");
+//        }
+//        else {
+//            System.out.println("The number is not prime");
+//        }
+    }
+
+    static boolean isPrime(int n) {
+        if (n <= 1)
+            return false;
+
+        for (int i = 2; i <= n / 2; i++) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    static boolean isPrimeEfficient(int n) {
+        if (n <= 1)
+            return false;
+
+        for (int i = 2; i <= Math.sqrt(n) ; i++) {
+            if (n % i == 0)
+                return false;
+        }
+        return true;
+    }
+}
