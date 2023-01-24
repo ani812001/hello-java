@@ -1,0 +1,142 @@
+package learning;
+
+public class LinkedList {
+
+    public static void main(String[] args) {
+        //Add nodes to the list
+        LinkedList linkedList = new LinkedList();
+        linkedList.addNode(0);
+        linkedList.addNode(10);
+        linkedList.addNode(8);
+        linkedList.addNode(9);
+
+        //Displays the nodes present in the list and reverse.
+        linkedList.display();
+        linkedList.reverse();
+        linkedList.reverseIterative();
+        System.out.println();
+        linkedList.display();
+        linkedList.remove(1);
+        linkedList.remove(3);
+        LinkedList.remove(0);
+
+        head = removeLastNode(head);
+        for (Node temp = head; temp != null; temp = temp.next)
+            System.out.print(temp.data + " ");
+
+    }
+
+    //Represent a node of the singly linked list
+    static class Node {
+        int data;
+        Node next;
+
+        public Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+    public static Node head = null;
+    public static Node tail = null;
+
+    public void addNode(int data) {
+        //Create a new node
+        Node newNode = new Node(data);
+        //Checks if the list is empty
+        if (head == null) {
+
+            head = newNode;
+            tail = newNode;
+        } else {
+
+            tail.next = newNode;
+            tail = newNode;
+        }
+    }
+
+    // Display
+    public void display() {
+        Node current = head;
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
+
+        while (current != null) {
+            //Prints each node by incrementing pointer
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    //reverse a linked list.
+    public void reverse(Node node) {
+        if (node == null) {
+            return;
+        }
+        reverse(node.next);
+        System.out.print(node.data + "->");
+    }
+
+    // reverse through Iterative
+    public void reverseIterative() {
+        Node current = head;
+        Node prev = null, ahead = null;
+        while (current != null) {
+            ahead = current.next;
+            current.next = prev;
+            prev = current;
+            current = ahead;
+        }
+        head = prev;
+    }
+
+    public void reverse() {
+        System.out.println("node reverse traversal");
+        reverse(head);
+    }
+
+    // remove last node
+
+    static Node removeLastNode(Node head) {
+        if (head == null)
+            return null;
+
+        if (head.next == null) {
+            return null;
+        }
+
+        // Find the second last node
+        Node second_last = head;
+        while (second_last.next.next != null)
+            second_last = second_last.next;
+
+        // Change next of second last
+        second_last.next = null;
+
+        return head;
+    }
+// remove from position
+
+    public static void remove(int position) {
+        if (head == null)
+            return;
+        Node temp = head;
+
+        if (position == 0) {
+            head = temp.next;
+            return;
+        }
+
+        for (int i = 0; temp != null && i < position - 1;
+             i++)
+            temp = temp.next;
+        if (temp == null || temp.next == null)
+            return;
+        Node next = temp.next.next;
+
+        temp.next = next;
+    }
+}
