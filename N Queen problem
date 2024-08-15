@@ -1,0 +1,104 @@
+/* Given a chess board having 
+ cells, you need to place N queens on the board in such a way that no queen attacks any other queen.
+
+Input:
+The only line of input consists of a single integer denoting N.
+
+Output:
+If it is possible to place all the N queens in such a way that no queen attacks another queen, then print "YES" (without quotes) in first line, then print N lines having N integers. The integer in 
+ line and 
+ column will denote the cell 
+ of the board and should be 1 if a queen is placed at 
+ otherwise 0. If there are more than way of placing queens print any of them.
+
+If it is not possible to place all N queens in the desired way, then print "NO" (without quotes).
+
+Constraints:
+1 <=N <=10
+*/
+
+
+
+import java.util.Scanner;
+
+public class Main {
+
+    // Method to solve the N-Queens problem using backtracking
+    private static boolean solveNQueens(int n, int row, int[] board) {
+        // Base case: If all queens are placed
+        if (row == n) {
+            return true; // Solution found
+        }
+
+        // Try placing a queen in each column of the current row
+        for (int col = 0; col < n; col++) {
+            // Check if it's safe to place the queen at (row, col)
+            if (isValid(board, row, col)) {
+                board[row] = col; // Place the queen
+                // Recursively place queens in the next row
+                if (solveNQueens(n, row + 1, board)) {
+                    return true; // Solution found
+                }
+                // Backtrack: Remove the queen from (row, col)
+                board[row] = -1;
+            }
+        }
+
+        // No valid column found in this row, so return false
+        return false;
+    }
+
+    // Method to check if it's safe to place a queen at (row, col)
+    private static boolean isValid(int[] board, int row, int col) {
+        for (int i = 0; i < row; i++) {
+            // Check column and diagonals for conflicts
+            if (board[i] == col || // Same column
+                board[i] - i == col - row || // Same major diagonal
+                board[i] + i == col + row) { // Same minor diagonal
+                return false; // Conflict found
+            }
+        }
+        return true; // No conflicts
+    }
+
+    // Method to print the board configuration
+    private static void printBoard(int n, int[] board) {
+        for (int r = 0; r < n; r++) {
+            for (int c = 0; c < n; c++) {
+                if (board[r] == c) {
+                    System.out.print("1 "); // Queen present
+                } else {
+                    System.out.print("0 "); // No queen
+                }
+            }
+            System.out.println(); // Move to next row
+        }
+    }
+
+    // Main method to handle input and output
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt(); // Read the size of the board
+        scanner.close();
+
+        // Handle special cases where no solution exists
+        if (n == 2 || n == 3) {
+            System.out.println("NO");
+            return;
+        }
+
+        // Initialize the board with -1 indicating no queens placed
+        int[] board = new int[n];
+        for (int i = 0; i < n; i++) {
+            board[i] = -1;
+        }
+
+        // Try to solve the N-Queens problem
+        if (solveNQueens(n, 0, board)) {
+            System.out.println("YES");
+            printBoard(n, board); // Print the solution
+        } else {
+            System.out.println("NO"); // No solution found
+        }
+    }
+}
